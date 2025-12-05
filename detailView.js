@@ -1,4 +1,3 @@
-// Вью детальной страницы фильма
 
 const DetailView = {
     render(movieId) {
@@ -11,7 +10,6 @@ const DetailView = {
     },
 
     afterRender(movieId) {
-        // Загружаем данные фильма
         MockAPI.getMovieDetails(movieId)
             .then(movie => {
                 const mainContent = document.getElementById('main-content');
