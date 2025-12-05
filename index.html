@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmFlow - Каталог фильмов</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Хедер будет добавляться через JS -->
+        <header id="header"></header>
+
+        <main id="main-content">
+            <!-- Контент будет рендериться здесь -->
+            <div class="loader-container" id="loader">
+                <div class="loader"></div>
+                <p>Загрузка фильмов...</p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-film"></i>
+                    <span>FilmFlow</span>
+                </div>
+                <p>Каталог фильмов с вашими персональными списками</p>
+                <div class="footer-links">
+                    <a href="#" class="nav-link" data-view="home">Главная</a>
+                    <a href="#" class="nav-link" data-view="favorites">Избранное</a>
+                    <a href="#" class="nav-link" data-view="watchlist">Хочу посмотреть</a>
+                </div>
+                <p class="footer-copyright">© 2023 FilmFlow. Все права защищены.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Подключаем скрипты -->
+    <script src="storage.js"></script>
+    <script src="mockData.js"></script>
+    <script src="components/header.js"></script>
+    <script src="components/movieCard.js"></script>
+    <script src="components/movieDetail.js"></script>
+    <script src="views/homeView.js"></script>
+    <script src="views/detailView.js"></script>
+    <script src="views/favoritesView.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
