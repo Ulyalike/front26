@@ -1,4 +1,3 @@
-// Вью страницы избранного и "хочу посмотреть"
 
 const FavoritesView = {
     render(viewType = 'favorites') {
@@ -21,7 +20,6 @@ const FavoritesView = {
     },
 
     afterRender(viewType = 'favorites') {
-        // Обработчики переключения вкладок
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const newViewType = btn.dataset.view;
@@ -31,10 +29,8 @@ const FavoritesView = {
             });
         });
 
-        // Загружаем фильмы
         this.loadMovies(viewType);
 
-        // Подписываемся на обновления хранилища
         const eventType = viewType === 'favorites' ? 'favoritesUpdated' : 'watchlistUpdated';
         StorageManager.subscribe(eventType, () => {
             this.loadMovies(viewType);
@@ -71,7 +67,6 @@ const FavoritesView = {
             return;
         }
 
-        // Показываем лоадер
         moviesGrid.innerHTML = `
             <div class="loader-container" style="grid-column: 1 / -1;">
                 <div class="loader"></div>
@@ -79,7 +74,6 @@ const FavoritesView = {
             </div>
         `;
 
-        // Загружаем информацию о каждом фильме
         Promise.all(
             movieIds.map(id => MockAPI.getMovieDetails(id))
         ).then(movies => {
@@ -87,7 +81,6 @@ const FavoritesView = {
                 MovieCardComponent.render(movie)
             ).join('');
 
-            // Инициализируем обработчики событий для карточек
             MovieCardComponent.afterRender();
         }).catch(error => {
             moviesGrid.innerHTML = `
